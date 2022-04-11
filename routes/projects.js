@@ -32,6 +32,7 @@ module.exports = express
         nodes {
           ... on Repository {
             name
+            url
             forkCount
             forks(first: 100) {
               nodes {
