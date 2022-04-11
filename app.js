@@ -3,7 +3,7 @@ const express = require('express')
 const hbs  = require('express-handlebars');
 const handlebars = hbs.engine;
 const indexRoute = require('./routes/index')
-const projectsRoute = require('./routes/projects')
+const projectsRoute = require('./routes/vakken')
 
 module.exports = express()
   .engine('hbs', handlebars({extname: '.hbs'}))
@@ -13,5 +13,5 @@ module.exports = express()
   .use(express.static('./public'))
 
   .use('/', indexRoute)
-  .use('/projects', projectsRoute)
+  .use('/vakken', projectsRoute)
 // .use(errorRoute)

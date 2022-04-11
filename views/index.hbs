@@ -1,12 +1,17 @@
 <main>
-    
+    {{#each vakken}}
+        <section>
+            <p><a href="/{{name}}" target="_blank">{{name}}</a></p>
+            <details>
+                <summary>{{forkCount}} forks</summary>
+                {{!-- {{#each forks.nodes}}
+                    <section>
+                        <p><a href="{{url}}" target="_blank">{{name}}</a></p>
+                        <p><a href="{{owner.url}}" target="_blank">{{owner.login}}</a></p>
+                        <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
+                    </section>
+                {{/each}} --}}
+            </details>
+        </section>
+    {{/each}}
 </main>
-
-
-{{!-- //DATA keys
-projects.forEach(project => 
-
-project.node.name
-project.node.description
-project.node.homepageUrl
-project.node.url --}}

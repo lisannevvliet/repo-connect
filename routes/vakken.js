@@ -26,7 +26,7 @@ function shuffle(array) {
 module.exports = express
   .Router()
 
-  .get('/', function (req, res) {
+  .get('/:vak', function (req, res) {
     // Get the repository information from my GitHub account
     graphqlAuth(`{
       search(query: "2122 org:cmda-minor-web", type: REPOSITORY, first: 20) {
@@ -35,17 +35,6 @@ module.exports = express
             name
             url
             forkCount
-            forks(first: 100) {
-              nodes {
-                name
-                url
-                owner {
-                  login
-                  url
-                  avatarUrl
-                }
-              }
-            }
           }
         }
       }
@@ -53,11 +42,20 @@ module.exports = express
       data.search.nodes.forEach((element, index) => {
         if (!fs.existsSync(`public/json/${element.name}.json`)) {
           fs.writeFileSync(`public/json/${element.name}.json`, JSON.stringify(shuffle(data.search.nodes[index].forks.nodes)))
+          //render
+        } else {
+          console.log("haal maar op")
         }
+
+        // fs.readFile(`public/json/${element.name}.json`, "utf8", function(_err, data) {
+        //   // JSON.parse(data)
+        // })
       })
 
-      res.render('projects', {
-        projects: data.search.nodes,
+      
+
+      res.render('vakken', {
+        vakken: data.search.nodes
       })
     })
   })
