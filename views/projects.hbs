@@ -1,11 +1,15 @@
 <main>
     {{#each projects}}
         <section>
-            <p>{{name}}</p>
-            <p>{{forkCount}}</p>
-            {{!-- <p>{{node.description}}</p> --}}
-            {{!-- <p>{{node.homepageUrl}}</p> --}}
-            {{!-- <p>{{node.url}}</p> --}}
+            <p>Name: {{name}}</p>
+            <p>Amount of forks: {{forkCount}}</p>
+            <p>Forks: &darr;</p>
+            {{#each forks.nodes}}
+                <section>
+                    <p><a href="{{url}}" target="_blank">{{name}}</a></p>
+                    <p><a href="{{owner.url}}" target="_blank">{{owner.login}}</a></p>
+                </section>
+            {{/each}}
         </section>
     {{/each}}
 </main>
