@@ -22,6 +22,7 @@ module.exports = express
                 owner {
                   login
                   url
+                  avatarUrl
                 }
               }
             }

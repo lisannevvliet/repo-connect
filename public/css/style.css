@@ -36,3 +36,8 @@ main {
 section {
   margin: 1em 0;
 }
+
+img {
+  height: 100px;
+  border-radius: 50%;
+}
