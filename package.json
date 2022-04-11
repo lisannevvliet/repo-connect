@@ -4,8 +4,8 @@
   "description": "Four days of creative exploration using the GitHub GraphQL API as the outset.",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "nodemon ./bin/www"
+    "start": "node app.js",
+    "test": "nodemon app.js"
   },
   "repository": {
     "type": "git",
