@@ -1,0 +1,38 @@
+:root {
+  --dark: #323537;
+  --light: #f0f0ef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--dark);
+  background-color: var(--light);
+  line-height: 1.6rem;
+  min-height: 100%;
+}
+
+header {
+  padding: 2em;
+}
+
+main {
+  padding: 2em;
+}
+
+section {
+  margin: 1em 0;
+}

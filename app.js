@@ -1,10 +1,13 @@
 require('dotenv').config()
 const express = require('express')
+const hbs  = require('express-handlebars');
+const handlebars = hbs.engine;
 const indexRoute = require('./routes/index')
 const projectsRoute = require('./routes/projects')
 
 module.exports = express()
-  .set('view engine', 'ejs')
+  .engine('hbs', handlebars({extname: '.hbs'}))
+  .set('view engine', 'hbs')
   .set('views', './views')
 
   .use(express.static('./public'))

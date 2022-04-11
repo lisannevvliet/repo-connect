@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "keywords": [
     "node",
     "express",
-    "ejs",
+    "handlebars",
     "graphql",
     "github"
   ],
@@ -27,7 +27,10 @@
   "dependencies": {
     "@octokit/graphql": "^4.8.0",
     "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
