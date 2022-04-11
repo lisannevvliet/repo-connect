@@ -10,6 +10,9 @@ const graphqlAuth = graphql.defaults({
 const fs = require("fs")
 const port = process.env.PORT || 3000;
 
+// Render static files.
+app.use(express.static("static"))
+
 // Templating engine
 app.engine('hbs', handlebars({extname: '.hbs'}));
 app.set('view engine', 'hbs');
@@ -50,7 +53,7 @@ app.get('/', (req, res) => {
 app.get('/:vak', (req, res) => {
     // Get the repository information from my GitHub account
     graphqlAuth(`{
-      search(query: "2122 org:cmda-minor-web", type: REPOSITORY, first: 20) {
+      search(query: "${req.params.vak} org:cmda-minor-web", type: REPOSITORY, first: 20) {
         nodes {
           ... on Repository {
             name
@@ -72,8 +75,8 @@ app.get('/:vak', (req, res) => {
       }
     }`).then((data) => {
       data.search.nodes.forEach((element, index) => {
-        if (!fs.existsSync(`public/json/${element.name}.json`)) {
-          fs.writeFileSync(`public/json/${element.name}.json`, JSON.stringify(shuffle(data.search.nodes[index].forks.nodes)))
+        if (!fs.existsSync(`static/json/${element.name}.json`)) {
+          fs.writeFileSync(`static/json/${element.name}.json`, JSON.stringify(shuffle(data.search.nodes[index].forks.nodes)))
           //render
         } else {
           console.log("haal maar op")
@@ -85,7 +88,7 @@ app.get('/:vak', (req, res) => {
       })
 
       res.render('vakken', {
-        vakken: data.search.nodes
+        vakken: data.search.nodes[0]
       })
     })
 })
