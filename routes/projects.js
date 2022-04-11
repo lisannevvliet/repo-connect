@@ -3,6 +3,7 @@ const { graphql } = require('@octokit/graphql')
 const graphqlAuth = graphql.defaults({
   headers: { authorization: 'token ' + process.env.GITHUB_PERSONAL_ACCESS_TOKEN },
 })
+const fs = require("fs")
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
@@ -49,8 +50,10 @@ module.exports = express
         }
       }
     }`).then((data) => {
-      data.search.nodes.forEach((_element, index) => {
-        shuffle(data.search.nodes[index].forks.nodes)
+      data.search.nodes.forEach((element, index) => {
+        if (!fs.existsSync(`public/json/${element.name}.json`)) {
+          fs.writeFileSync(`public/json/${element.name}.json`, JSON.stringify(shuffle(data.search.nodes[index].forks.nodes)))
+        }
       })
 
       res.render('projects', {
