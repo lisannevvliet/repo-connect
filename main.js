@@ -16,19 +16,25 @@ const graphqlAuth = graphql.defaults({
 // Render static files.
 app.use(express.static("static"))
 
-// Set the view engine to Handlebars and change the filename extension.
-app.engine("hbs", handlebars.engine({ extname: ".hbs" }))
+// Set the view engine to Handlebars, import the helpers and change the filename extension.
+app.engine("hbs", handlebars.engine({ helpers: require("./helpers"), extname: ".hbs" }))
 app.set("view engine", "hbs")
+
+// Parse incoming requests.
+app.use(express.urlencoded({ extended: true }))
 
 // Set and log the port for Express.
 const port = process.env.PORT || 3000
 app.listen(port, () => { console.log(`Express running at http://localhost:${port}.`) })
 
+// Variable in which the selected year is stored.
+let year = 2122
+
 // Listen to all GET requests on /.
 app.get("/", (_req, res) => {
   // Get all cmda-minor-web repositories with 2122 in the name.
   graphqlAuth(`{
-    search(query: "2122 org:cmda-minor-web", type: REPOSITORY, first: 20) {
+    search(query: "${year} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
           name
@@ -40,9 +46,19 @@ app.get("/", (_req, res) => {
   }`).then((data) => {
     // Load the index page with the subjects.
     res.render("index", {
-      subjects: data.search.nodes
+      subjects: data.search.nodes,
+      year: year
     })
   })
+})
+
+// Listen to all POST requests on /.
+app.post("/", (req, res) => {
+  // Set the year variable to the selected year.
+  year = req.body.year
+
+  // Redirect to the index page.
+  res.redirect("/")
 })
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array

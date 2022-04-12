@@ -1,4 +1,14 @@
 <main>
+    <form action="/" method="post">
+        <select name="year">
+            <option value="2122"{{#ifCond year "2122"}} selected{{/ifCond}}>2021-2022</option>
+            <option value="2021"{{#ifCond year "2021"}} selected{{/ifCond}}>2020-2021</option>
+            <option value="1920"{{#ifCond year "1920"}} selected{{/ifCond}}>2019-2020</option>
+            <option value="1819"{{#ifCond year "1819"}} selected{{/ifCond}}>2018-2019</option>
+        </select>
+        <input type="submit"></input>
+    </form>
+    
     {{#each subjects}}
         <section>
             <p><a href="/{{name}}">{{name}}</a></p>
