@@ -105,14 +105,14 @@ app.get('/:subject', (req, res) => {
     }
   }`).then((data) => {
     // Check if a JSON with the name of the subject already exists.
-    if (!fs.existsSync(`static/json/${data.search.nodes[0].name}.json`)) {
+    if (!fs.existsSync(`/json/${data.search.nodes[0].name}.json`)) {
       // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
-      fs.writeFileSync(`static/json/${data.search.nodes[0].name}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+      fs.writeFileSync(`/json/${data.search.nodes[0].name}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
     }
 
     // Render the subject page with the forks.
     res.render('subject', {
-      forks: JSON.parse(fs.readFileSync(`static/json/${data.search.nodes[0].name}.json`, "utf8"))
+      forks: JSON.parse(fs.readFileSync(`/json/${data.search.nodes[0].name}.json`, "utf8"))
     })
   })
 })

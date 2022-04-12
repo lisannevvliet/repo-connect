@@ -2,10 +2,10 @@
   "name": "p2-github-hackaton-2122",
   "version": "1.0.0",
   "description": "Four days of creative exploration using the GitHub GraphQL API as the outset.",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "nodemon app.js"
+    "start": "node main.js",
+    "test": "nodemon main.js"
   },
   "repository": {
     "type": "git",
