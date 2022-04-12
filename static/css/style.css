@@ -1,6 +1,6 @@
 :root {
-  --dark: #323537;
-  --light: #f0f0ef;
+  --dark: #101010;
+  --light: #F3F3F3;
 }
 
 * {
@@ -15,18 +15,23 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  color: var(--dark);
-  background-color: var(--light);
-  line-height: 1.6rem;
-  min-height: 100%;
+  color: var(--light);
+  background: var(--dark);
+  font-family: sans-serif;
 }
+
+a {
+  color: var(--light);
+}
+
+/* STANDAARD STYLING */
 
 header {
   padding: 2em;
+}
+
+header img {
+  width: 225px;
 }
 
 main {
@@ -35,9 +40,4 @@ main {
 
 section {
   margin: 1em 0;
-}
-
-img {
-  height: 100px;
-  border-radius: 50%;
 }
