@@ -1,6 +1,6 @@
 <main>
     <form action="/" method="post">
-        <select name="year" onchange="submit()">
+        <select name="year" onchange="this.form.submit()">
             <option value="2122"{{#ifCond year "2122"}} selected{{/ifCond}}>2021-2022</option>
             <option value="2021"{{#ifCond year "2021"}} selected{{/ifCond}}>2020-2021</option>
             <option value="1920"{{#ifCond year "1920"}} selected{{/ifCond}}>2019-2020</option>
