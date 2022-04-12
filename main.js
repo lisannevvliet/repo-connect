@@ -1,12 +1,8 @@
-// Import Dotenv.
+// Import Node.js modules.
 require("dotenv").config()
-// Import Express.
 const express = require("express")
-// Import Handlebars.
 const handlebars  = require("express-handlebars")
-// Import fs (file system).
 const fs = require("fs")
-// Import GraphQL.
 const { graphql } = require("@octokit/graphql")
 
 // Initialise Express.
@@ -36,19 +32,9 @@ app.get("/", (_req, res) => {
       nodes {
         ... on Repository {
           name
+          description
           url
           forkCount
-          forks(first: 100) {
-            nodes {
-              name
-              url
-              owner {
-                login
-                url
-                avatarUrl
-              }
-            }
-          }
         }
       }
     }
@@ -84,12 +70,10 @@ app.get("/:subject", (req, res) => {
     search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
-          name
-          url
-          forkCount
           forks(first: 100) {
             nodes {
               name
+              description
               url
               owner {
                 login
