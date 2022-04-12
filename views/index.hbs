@@ -1,4 +1,9 @@
 <main>
+    <header>
+        <h1><a href="https://github.com/cmda-minor-web">Minor Web Design & Development</a></h1>
+        <p>Half year minor programme about Web Design and Development in Amsterdam. Bachelor Communication and Multimedia Design, Amsterdam University of Applied Science</p>
+    </header>
+
     <form action="/" method="post">
         <select name="year" onchange="submit()">
             <option value="2122"{{#ifCond year "2122"}} selected{{/ifCond}}>2021-2022</option>
@@ -9,10 +14,13 @@
         <button type="submit"></button>
     </form>
     
-    {{#each subjects}}
-        <section>
-            <p><a href="/{{name}}">{{name}}</a></p>
-            <p>{{forkCount}} forks</p>
-        </section>
-    {{/each}}
+    <section>
+        {{#each subjects}}
+                <a href="/{{name}}">
+                    <h2>{{name}}</h2>
+                    <p>{{description}}</p>
+                    <span><img src="/images/forks_icon.svg"/>{{forkCount}}</span>
+                </a>
+        {{/each}}
+    </section>
 </main>
