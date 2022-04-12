@@ -166,3 +166,7 @@ main section a span {
 main section a span img {
   margin-right: .3em;
 }
+
+.hide {
+  display: none;
+}
