@@ -1,29 +1,22 @@
 {
-  "name": "p2-github-hackaton-2122",
+  "name": "repo-connect",
   "version": "1.0.0",
-  "description": "Four days of creative exploration using the GitHub GraphQL API as the outset.",
+  "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "test": "nodemon main.js"
+    "test": "nodemon main.js",
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cmda-minor-web/project-2-github-hackaton-2122.git"
+    "url": "git+https://github.com/lisannevvliet/repo-connect.git"
   },
-  "keywords": [
-    "node",
-    "express",
-    "handlebars",
-    "graphql",
-    "github"
-  ],
-  "author": "Justus Sturkenboom <j.p.sturkenboom@hva.nl>",
-  "license": "GPL-3.0",
+  "author": "",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cmda-minor-web/project-2-github-hackaton-2122/issues"
+    "url": "https://github.com/lisannevvliet/repo-connect/issues"
   },
-  "homepage": "https://github.com/cmda-minor-web/project-2-github-hackaton-2122#readme",
+  "homepage": "https://github.com/lisannevvliet/repo-connect#readme",
   "dependencies": {
     "@octokit/graphql": "^4.8.0",
     "dotenv": "^16.0.0",
