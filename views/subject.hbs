@@ -1,0 +1,9 @@
+<main>
+    {{#each forks}}
+        <section>
+            <p><a href="{{url}}" target="_blank">{{name}}</a></p>
+            <p><a href="{{owner.url}}" target="_blank">{{owner.login}}</a></p>
+            <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
+        </section>
+    {{/each}}
+</main>

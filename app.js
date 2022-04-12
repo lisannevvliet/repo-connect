@@ -1,104 +1,68 @@
+// Import Dotenv.
 require('dotenv').config()
-const hbs  = require('express-handlebars');
-const handlebars = hbs.engine;
+// Import Express.
+const express = require('express')
+// Import Handlebars.
+const hbs  = require('express-handlebars')
+const handlebars = hbs.engine
+// Import fs (file system).
+const fs = require("fs")
+// Import GraphQL.
 const { graphql } = require('@octokit/graphql')
-const express = require('express');
-const app = express();
+
+// Initialise Express.
+const app = express()
+
+// Configure GraphQL authorization.
 const graphqlAuth = graphql.defaults({
   headers: { authorization: 'token ' + process.env.GITHUB_PERSONAL_ACCESS_TOKEN },
 })
-const fs = require("fs")
-const port = process.env.PORT || 3000;
 
 // Render static files.
 app.use(express.static("static"))
 
-// Templating engine
-app.engine('hbs', handlebars({extname: '.hbs'}));
-app.set('view engine', 'hbs');
-app.set('views', './views');
+// Set the view engine to Handlebars and change the filename extension.
+app.engine('hbs', handlebars({ extname: '.hbs' }))
+app.set('view engine', 'hbs')
+app.set('views', './views')
 
+// Set and log the port for Express.
+const port = process.env.PORT || 3000
+app.listen(port, () => { console.log(`Express running at http://localhost:${port}.`) })
 
-//Routing
-app.get('/', (req, res) => {
-    // Get the repository information from my GitHub account
-    graphqlAuth(`{
-      search(query: "2122 org:cmda-minor-web", type: REPOSITORY, first: 20) {
-        nodes {
-          ... on Repository {
-            name
-            url
-            forkCount
-            forks(first: 100) {
-              nodes {
-                name
+// Listen to all GET requests on /.
+app.get('/', (_req, res) => {
+  // Get all cmda-minor-web repositories with 2122 in the name.
+  graphqlAuth(`{
+    search(query: "2122 org:cmda-minor-web", type: REPOSITORY, first: 20) {
+      nodes {
+        ... on Repository {
+          name
+          url
+          forkCount
+          forks(first: 100) {
+            nodes {
+              name
+              url
+              owner {
+                login
                 url
-                owner {
-                  login
-                  url
-                  avatarUrl
-                }
+                avatarUrl
               }
             }
           }
         }
       }
-    }`).then((data) => {
-      res.render('index', {
-        vakken: data.search.nodes
-      })
+    }
+  }`).then((data) => {
+    // Load the index page with the subjects.
+    res.render('index', {
+      subjects: data.search.nodes
     })
+  })
 })
 
-app.get('/:vak', (req, res) => {
-    // Get the repository information from my GitHub account
-    graphqlAuth(`{
-      search(query: "${req.params.vak} org:cmda-minor-web", type: REPOSITORY, first: 20) {
-        nodes {
-          ... on Repository {
-            name
-            url
-            forkCount
-            forks(first: 100) {
-              nodes {
-                name
-                url
-                owner {
-                  login
-                  url
-                  avatarUrl
-                }
-              }
-            }
-          }
-        }
-      }
-    }`).then((data) => {
-      data.search.nodes.forEach((element, index) => {
-        if (!fs.existsSync(`static/json/${element.name}.json`)) {
-          fs.writeFileSync(`static/json/${element.name}.json`, JSON.stringify(shuffle(data.search.nodes[index].forks.nodes)))
-          //render
-        } else {
-          console.log("haal maar op")
-        }
-
-        // fs.readFile(`public/json/${element.name}.json`, "utf8", function(_err, data) {
-        //   // JSON.parse(data)
-        // })
-      })
-
-      res.render('vakken', {
-        vakken: data.search.nodes[0]
-      })
-    })
-})
-
-// Set server
-app.listen(port, () => {
-    console.log(`Gebruikte poort:${port}!`)
-});
-
-
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
   let currentIndex = array.length, randomIndex
 
@@ -115,3 +79,40 @@ function shuffle(array) {
 
   return array
 }
+
+app.get('/:subject', (req, res) => {
+  // Get the cmda-minor-web repository that matches the subject name.
+  graphqlAuth(`{
+    search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+      nodes {
+        ... on Repository {
+          name
+          url
+          forkCount
+          forks(first: 100) {
+            nodes {
+              name
+              url
+              owner {
+                login
+                url
+                avatarUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }`).then((data) => {
+    // Check if a JSON with the name of the subject already exists.
+    if (!fs.existsSync(`static/json/${data.search.nodes[0].name}.json`)) {
+      // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
+      fs.writeFileSync(`static/json/${data.search.nodes[0].name}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+    }
+
+    // Render the subject page with the forks.
+    res.render('subject', {
+      forks: JSON.parse(fs.readFileSync(`static/json/${data.search.nodes[0].name}.json`, "utf8"))
+    })
+  })
+})
