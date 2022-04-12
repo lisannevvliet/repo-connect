@@ -1,20 +1,12 @@
 <main>
     <form action="/" method="post">
-<<<<<<< HEAD
         <select name="year" onchange="submit()">
-=======
-        <select name="year">
->>>>>>> 008400d081aedc25731446e4edeefebe828bb35c
             <option value="2122"{{#ifCond year "2122"}} selected{{/ifCond}}>2021-2022</option>
             <option value="2021"{{#ifCond year "2021"}} selected{{/ifCond}}>2020-2021</option>
             <option value="1920"{{#ifCond year "1920"}} selected{{/ifCond}}>2019-2020</option>
             <option value="1819"{{#ifCond year "1819"}} selected{{/ifCond}}>2018-2019</option>
         </select>
-<<<<<<< HEAD
         <button type="submit"></button>
-=======
-        <input type="submit"></input>
->>>>>>> 008400d081aedc25731446e4edeefebe828bb35c
     </form>
     
     {{#each subjects}}
