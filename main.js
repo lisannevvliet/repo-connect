@@ -33,7 +33,6 @@ app.get("/", (_req, res) => {
         ... on Repository {
           name
           description
-          url
           forkCount
         }
       }
@@ -71,6 +70,10 @@ app.get("/:subject", (req, res) => {
     search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
+          name
+          description
+          url
+          forkCount
           forks(first: 100) {
             nodes {
               name
