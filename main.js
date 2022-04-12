@@ -64,6 +64,7 @@ function shuffle(array) {
   return array
 }
 
+// Listen to all GET requests on /[subject].
 app.get("/:subject", (req, res) => {
   // Get the cmda-minor-web repository that matches the subject name.
   graphqlAuth(`{
@@ -87,14 +88,32 @@ app.get("/:subject", (req, res) => {
     }
   }`).then((data) => {
     // Check if a JSON with the name of the subject already exists.
-    if (!fs.existsSync(`static/json/${data.search.nodes[0].name}.json`)) {
+    if (!fs.existsSync(`static/json/${req.params.subject}.json`)) {
       // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
-      fs.writeFileSync(`static/json/${data.search.nodes[0].name}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+      fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
     }
 
     // Render the subject page with the forks.
     res.render("subject", {
-      forks: JSON.parse(fs.readFileSync(`static/json/${data.search.nodes[0].name}.json`, "utf8"))
+      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
     })
   })
+})
+
+// Listen to all GET requests on /[subject]/admin.
+app.get("/:subject/admin", (req, res) => {
+  // Render the admin page with the forks.
+  res.render("admin", {
+    forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
+    subject: req.params.subject
+  })
+})
+
+// Listen to all POST requests on /[subject]/admin/shuffle.
+app.post("/:subject/admin/shuffle", (req, res) => {
+  // Delete the JSON with the name of the subject.
+  fs.unlinkSync(`static/json/${req.params.subject}.json`)
+
+  // Redirect to the index page.
+	res.redirect("/")
 })
