@@ -114,9 +114,34 @@ app.get("/:subject/admin", (req, res) => {
 
 // Listen to all POST requests on /[subject]/admin/shuffle.
 app.post("/:subject/admin/shuffle", (req, res) => {
-  // Delete the JSON with the name of the subject.
-  fs.unlinkSync(`static/json/${req.params.subject}.json`)
+  // Get the cmda-minor-web repository that matches the subject name.
+  graphqlAuth(`{
+    search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+      nodes {
+        ... on Repository {
+          forks(first: 100) {
+            nodes {
+              name
+              description
+              url
+              owner {
+                login
+                url
+                avatarUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }`).then((data) => {
+    // Delete the JSON with the name of the subject.
+    fs.unlinkSync(`static/json/${req.params.subject}.json`)
 
-  // Redirect to the index page.
-	res.redirect("/")
+    // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
+    fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+
+    // Redirect to the admin page.
+    res.redirect(`/${req.params.subject}/admin`)
+  })
 })
