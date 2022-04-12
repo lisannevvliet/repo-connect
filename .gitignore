@@ -105,3 +105,5 @@ dist
 
 # MacOS file
 .DS_Store
+
+static/json
