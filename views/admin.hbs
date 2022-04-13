@@ -7,7 +7,7 @@
     </header>
 
     <h2>Connected Repositories</h2>
-    <section>
+    <section{{#ifCond uneven true}} class="uneven"{{/ifCond}}>
         {{#each forks}}
             <a href="{{url}}" target="_blank">
                 <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">

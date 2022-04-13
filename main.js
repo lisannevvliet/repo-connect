@@ -118,10 +118,11 @@ app.get("/:subject", (req, res) => {
       fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
     }
 
-    // Render the subject page with the forks.
+    // Render the subject page with the respository, forks and Boolean which tells whether the amount of forks is uneven.
     res.render("subject", {
       repository: data.repositories.nodes[0],
-      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
+      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
+      uneven: data.repositories.nodes[0].forks.nodes.length % 2 != 0
     })
   })
 })
@@ -159,7 +160,7 @@ app.get("/:subject/admin", (req, res) => {
       fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
     }
 
-    // Render the admin page with the forks.
+    // Render the admin page with the respository and forks.
     res.render("admin", {
       repository: data.repositories.nodes[0],
       forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
