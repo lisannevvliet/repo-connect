@@ -1,7 +1,7 @@
 <main>
     <header>
-        <h1><a href="https://github.com/cmda-minor-web">Minor Web Design & Development</a></h1>
-        <p>Half year minor programme about Web Design and Development in Amsterdam. Bachelor Communication and Multimedia Design, Amsterdam University of Applied Science</p>
+        <h1><a href="{{organization.url}}">{{organization.name}}</a></h1>
+        <p>{{organization.description}}</p>
     </header>
 
     <form action="/" method="post">
@@ -15,7 +15,7 @@
     </form>
     
     <section>
-        {{#each subjects}}
+        {{#each repositories}}
                 <a href="/{{name}}">
                     <h2>{{name}}</h2>
                     <p>{{description}}</p>

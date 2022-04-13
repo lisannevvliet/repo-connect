@@ -34,7 +34,7 @@ let year = 2122
 app.get("/", (_req, res) => {
   // Get all cmda-minor-web repositories with [year] in the name.
   graphqlAuth(`{
-    search(query: "${year} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+    repositories: search(query: "${year} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
           name
@@ -43,10 +43,16 @@ app.get("/", (_req, res) => {
         }
       }
     }
+    organization(login: "cmda-minor-web") {
+      name
+      description
+      url
+    }
   }`).then((data) => {
     // Load the index page with the subjects.
     res.render("index", {
-      subjects: data.search.nodes,
+      organization: data.organization,
+      repositories: data.repositories.nodes,
       year: year
     })
   })
@@ -83,7 +89,7 @@ function shuffle(array) {
 app.get("/:subject", (req, res) => {
   // Get the cmda-minor-web repository that matches the subject name.
   graphqlAuth(`{
-    search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+    repositories: search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
           name
@@ -108,8 +114,8 @@ app.get("/:subject", (req, res) => {
   }`).then((data) => {
     // Check if a JSON with the name of the subject already exists.
     if (!fs.existsSync(`static/json/${req.params.subject}.json`)) {
-      // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
-      fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+      // Shuffle data.repositories.nodes[0].forks.nodes and put in in a JSON.
+      fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
     }
 
     // Render the subject page with the forks.
@@ -132,7 +138,7 @@ app.get("/:subject/admin", (req, res) => {
 app.post("/:subject/admin/shuffle", (req, res) => {
   // Get the cmda-minor-web repository that matches the subject name.
   graphqlAuth(`{
-    search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+    repositories: search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
         ... on Repository {
           forks(first: 100) {
@@ -154,8 +160,8 @@ app.post("/:subject/admin/shuffle", (req, res) => {
     // Delete the JSON with the name of the subject.
     fs.unlinkSync(`static/json/${req.params.subject}.json`)
 
-    // Shuffle data.search.nodes[0].forks.nodes and put in in a JSON.
-    fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.search.nodes[0].forks.nodes)))
+    // Shuffle data.repositories.nodes[0].forks.nodes and put in in a JSON.
+    fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
 
     // Redirect to the admin page.
     res.redirect(`/${req.params.subject}/admin`)
