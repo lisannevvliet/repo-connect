@@ -11,15 +11,19 @@
 
     <h2>Connected Repositories</h2>
     <section{{#ifCond uneven true}} class="uneven"{{/ifCond}}>
-        {{#each forks}}
-            <a href="{{url}}" target="_blank">
-                <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
+        {{#ifCond forks.length 0}}
+            <p>This repository has no forks.</p>
+        {{else}}
+            {{#each forks}}
+                <a href="{{url}}" target="_blank">
+                    <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
 
-                <div>
-                    <h4>{{name}}</h4>
-                    <p>{{owner.login}}</p>
-                </div>
-            </a>
-        {{/each}}
+                    <div>
+                        <h4>{{name}}</h4>
+                        <p>{{owner.login}}</p>
+                    </div>
+                </a>
+            {{/each}}
+        {{/ifCond}}
     </section>
 </main>
