@@ -42,6 +42,13 @@ h2 {
   margin: 0;
 }
 
+h3 {
+  font-family: 'Momcake', sans-serif;
+  letter-spacing: .04em;
+  font-size: 1.7em;
+  margin: 0;
+}
+
 a {
   color: var(--light);
   text-decoration: none;
@@ -77,101 +84,6 @@ main header p {
   margin-top: .3em;
 }
 
-main section {
-  display: flex;
-  width: 100%;
-  max-width: 1000px;
-  flex-wrap: wrap;
-  gap: 2em 3em;
-  margin-top: 2em;
-}
-
-main section a {
-  height: 100%;
-  width: 100%;
-  max-width: 420px;
-  background: var(--red_o1);
-  display: flex;
-  flex-direction: column;
-  padding: 2.1em 2.4em;
-  border-radius: 1em;
-  color: var(--red);
-  position: relative;
-  transform: scale(1);
-  transition: transform .5s ease, box-shadow .75s ease;;
-}
-
-main section a:hover {
-  transform: scale(1.007);
-  transition: transform .5s ease, box-shadow .75s ease;
-  box-shadow: 0 0 15px var(--red_o1);
-}
-
-main section a:nth-child(3n+3):hover {
-  box-shadow: 0 0 15px var(--blue_o1);
-}
-
-main section a:nth-child(3n+2):hover {
-  box-shadow: 0 0 15px var(--yellow_o1);
-}
-
-main section a:nth-child(3n+3) {
-  background: var(--blue_o1);
-  color: var(--blue);
-}
-
-main section a:nth-child(3n+2) {
-  background: var(--yellow_o1);
-  color: var(--yellow);
-}
-
-main section h2 {
-  display: flex;
-  align-items: flex-start;
-}
-
-main section h2::before {
-  content: url('/images/repo_icon_red.svg');
-  width: .8em;
-  height: .8em;
-  margin-right: .1em;
-}
-
-main section a:nth-child(3n+2) h2::before {
-  content: url('/images/repo_icon_yellow.svg');
-}
-
-main section a:nth-child(3n+3) h2::before {
-  content: url('/images/repo_icon_blue.svg');
-}
-
-main section a p {
-  margin: .5em 0 1.75em 0;
-  font-size: .85em;
-  color: var(--light);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-
-}
-
-main section a span {
-  position: absolute;
-  color: var(--grey);
-  right: 1em;
-  bottom: 1em;
-  font-weight: 500;
-}
-
-main section a span img {
-  margin-right: .3em;
-}
-
-.hide {
-  display: none;
-}
-
 select {
   appearance: none;
   font-family: 'Chivo', sans-serif;
@@ -192,3 +104,102 @@ select:hover {
   background-color: var(--grey);
   transition: background-color .5s ease;
 }
+
+/* HOME STYLING */
+
+.home section {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  flex-wrap: wrap;
+  gap: 2em 3em;
+  margin-top: 2em;
+}
+
+.home section a {
+  height: 100%;
+  width: 100%;
+  max-width: 420px;
+  background: var(--red_o1);
+  display: flex;
+  flex-direction: column;
+  padding: 2.1em 2.4em;
+  border-radius: 1em;
+  color: var(--red);
+  position: relative;
+  transform: scale(1);
+  transition: transform .5s ease, box-shadow .75s ease;;
+}
+
+.home section a:hover {
+  transform: scale(1.007);
+  transition: transform .5s ease, box-shadow .75s ease;
+  box-shadow: 0 0 15px var(--red_o1);
+}
+
+.home section a:nth-child(3n+3):hover {
+  box-shadow: 0 0 15px var(--blue_o1);
+}
+
+.home section a:nth-child(3n+2):hover {
+  box-shadow: 0 0 15px var(--yellow_o1);
+}
+
+.home section a:nth-child(3n+3) {
+  background: var(--blue_o1);
+  color: var(--blue);
+}
+
+.home section a:nth-child(3n+2) {
+  background: var(--yellow_o1);
+  color: var(--yellow);
+}
+
+.home section h2 {
+  display: flex;
+  align-items: flex-start;
+}
+
+.home section h2::before {
+  content: url('/images/repo_icon_red.svg');
+  width: .8em;
+  height: .8em;
+  margin-right: .1em;
+}
+
+.home section a:nth-child(3n+2) h2::before {
+  content: url('/images/repo_icon_yellow.svg');
+}
+
+.home section a:nth-child(3n+3) h2::before {
+  content: url('/images/repo_icon_blue.svg');
+}
+
+.home section a p {
+  margin: .5em 0 1.75em 0;
+  font-size: .85em;
+  color: var(--light);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+
+}
+
+.home section a span {
+  position: absolute;
+  color: var(--grey);
+  right: 1em;
+  bottom: 1em;
+  font-weight: 500;
+}
+
+.home section a span img {
+  margin-right: .3em;
+}
+
+.hide {
+  display: none;
+}
+
+/* SUBJECT STYLING */
