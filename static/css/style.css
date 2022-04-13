@@ -203,3 +203,11 @@ select:hover {
 }
 
 /* SUBJECT STYLING */
+
+.subject section {
+  display: flex;
+}
+
+.subject section img {
+  height: 5em;
+}
