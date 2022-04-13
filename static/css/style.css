@@ -2,6 +2,7 @@
 :root {
   --dark: #101010;
   --light: #F3F3F3;
+  --light_o1: rgba(243, 243, 243, var(--o1));
   --grey: #D6D6D6;
   --red: #FC6A6B;
   --blue: #5D62FB;
@@ -169,4 +170,25 @@ main section a span img {
 
 .hide {
   display: none;
+}
+
+select {
+  appearance: none;
+  font-family: 'Chivo', sans-serif;
+  font-weight: bold;
+  padding: 1em 2.25em 1em 1.75em;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+  transition: background-color .5s ease;
+  background-color: var(--light);
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+}
+
+select:hover {
+  background-color: var(--grey);
+  transition: background-color .5s ease;
 }

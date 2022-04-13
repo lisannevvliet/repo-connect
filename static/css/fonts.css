@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Momcake';
-    src: url('/font/Momcake-Bold.woff2') format('woff2'),
-        url('/font/Momcake-Bold.woff') format('woff');
+    src: url('/font/momcake/Momcake-Bold.woff2') format('woff2'),
+        url('/font/momcake/Momcake-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'Momcake';
-    src: url('/font/Momcake-Thin.woff2') format('woff2'),
-        url('/font/Momcake-Thin.woff') format('woff');
+    src: url('/font/momcake/Momcake-Thin.woff2') format('woff2'),
+        url('/font/momcake/Momcake-Thin.woff') format('woff');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -26,16 +26,16 @@
 /* THIN */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Thin.woff2') format('woff2'),
-        url('/font/Chivo-Thin.woff') format('woff');
+    src: url('/font/chivo/Chivo-Thin.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Thin.woff') format('woff');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-ThinItalic.woff2') format('woff2'),
-        url('/font/Chivo-ThinItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-ThinItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-ThinItalic.woff') format('woff');
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -45,16 +45,16 @@
 /* LIGHT */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Light.woff2') format('woff2'),
-        url('/font/Chivo-Light.woff') format('woff');
+    src: url('/font/chivo/Chivo-Light.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-LightItalic.woff2') format('woff2'),
-        url('/font/Chivo-LightItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-LightItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -65,16 +65,16 @@
 /* REGULAR */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Regular.woff2') format('woff2'),
-        url('/font/Chivo-Regular.woff') format('woff');
+    src: url('/font/chivo/Chivo-Regular.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Italic.woff2') format('woff2'),
-        url('/font/Chivo-Italic.woff') format('woff');
+    src: url('/font/chivo/Chivo-Italic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Italic.woff') format('woff');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -85,16 +85,16 @@
 /* MEDIUM */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Medium.woff2') format('woff2'),
-        url('/font/Chivo-Medium.woff') format('woff');
+    src: url('/font/chivo/Chivo-Medium.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-MediumItalic.woff2') format('woff2'),
-        url('/font/Chivo-MediumItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-MediumItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-MediumItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
     font-display: swap;
@@ -104,16 +104,16 @@
 /* BOLD */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Bold.woff2') format('woff2'),
-        url('/font/Chivo-Bold.woff') format('woff');
+    src: url('/font/chivo/Chivo-Bold.woff2') format('woff2'),
+        url('/font/chivo/Chivo-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-BoldItalic.woff2') format('woff2'),
-        url('/font/Chivo-BoldItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-BoldItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -123,16 +123,16 @@
 /* EXTRA BOLD */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-ExtraBold.woff2') format('woff2'),
-        url('/font/Chivo-ExtraBold.woff') format('woff');
+    src: url('/font/chivo/Chivo-ExtraBold.woff2') format('woff2'),
+        url('/font/chivo/Chivo-ExtraBold.woff') format('woff');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-ExtraBoldItalic.woff2') format('woff2'),
-        url('/font/Chivo-ExtraBoldItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-ExtraBoldItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-ExtraBoldItalic.woff') format('woff');
     font-weight: 800;
     font-style: italic;
     font-display: swap;
@@ -142,7 +142,7 @@
 /* BLACK */
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-Black.woff2') format('woff2'),
+    src: url('/font/chivo/Chivo-Black.woff2') format('woff2'),
         url('/font/Chivo-Black.woff') format('woff');
     font-weight: 900;
     font-style: normal;
@@ -150,8 +150,8 @@
 }
 @font-face {
     font-family: 'Chivo';
-    src: url('/font/Chivo-BlackItalic.woff2') format('woff2'),
-        url('/font/Chivo-BlackItalic.woff') format('woff');
+    src: url('/font/chivo/Chivo-BlackItalic.woff2') format('woff2'),
+        url('/font/chivo/Chivo-BlackItalic.woff') format('woff');
     font-weight: 900;
     font-style: italic;
     font-display: swap;
