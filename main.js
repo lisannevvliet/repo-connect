@@ -163,7 +163,8 @@ app.get("/:subject/admin", (req, res) => {
     // Render the admin page with the respository and forks.
     res.render("admin", {
       repository: data.repositories.nodes[0],
-      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
+      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
+      uneven: data.repositories.nodes[0].forks.nodes.length % 2 != 0
     })
   })
 })
