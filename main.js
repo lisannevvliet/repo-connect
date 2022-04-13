@@ -128,10 +128,42 @@ app.get("/:subject", (req, res) => {
 
 // Listen to all GET requests on /[subject]/admin.
 app.get("/:subject/admin", (req, res) => {
-  // Render the admin page with the forks.
-  res.render("admin", {
-    forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
-    subject: req.params.subject
+  // Get the cmda-minor-web repository that matches the subject name.
+  graphqlAuth(`{
+    repositories: search(query: "${req.params.subject} org:cmda-minor-web", type: REPOSITORY, first: 20) {
+      nodes {
+        ... on Repository {
+          name
+          description
+          url
+          forkCount
+          forks(first: 100) {
+            nodes {
+              name
+              description
+              url
+              owner {
+                login
+                url
+                avatarUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }`).then((data) => {
+    // Check if a JSON with the name of the subject already exists.
+    if (!fs.existsSync(`static/json/${req.params.subject}.json`)) {
+      // Shuffle data.repositories.nodes[0].forks.nodes and put in in a JSON.
+      fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
+    }
+
+    // Render the admin page with the forks.
+    res.render("admin", {
+      repository: data.repositories.nodes[0],
+      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
+    })
   })
 })
 
