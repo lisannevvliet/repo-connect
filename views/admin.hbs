@@ -1,9 +1,13 @@
-{{> headerAdmin }}
-
 <main class="subject">
     <header>
-        <h1><a href="{{repository.url}}" target="_blank">{{repository.name}}</a></h1>
+        <span>
+            <h1><a href="{{repository.url}}" target="_blank">{{repository.name}}</a></h1>
+            <p><img src="/images/forks_icon.svg"/>{{repository.forkCount}}</p>
+        </span>
         <p>{{repository.description}}</p>
+        <form action="/{{repository.name}}/admin/shuffle" method="post">
+            <button type="submit" class="shuffle">Shuffle</button>
+        </form>
     </header>
 
     <h2>Connected Repositories</h2>
