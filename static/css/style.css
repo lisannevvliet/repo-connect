@@ -263,6 +263,7 @@ select:hover {
   width: 40%;
   border-radius: 1em;
   position: relative;
+  transition: transform .5s ease, box-shadow .75s ease;
 }
 
 .subject section a:nth-child(2n+1) {
@@ -291,6 +292,16 @@ select:hover {
   border-bottom: 3px solid var(--light);
 }
 
+.subject section a:hover {
+  transform: scale(1.007);
+  transition: transform .5s ease, box-shadow .75s ease;
+  box-shadow: 0 0 15px var(--red_o2);
+}
+
+.subject section a:nth-child(2n+1):hover {
+  box-shadow: 0 0 15px var(--blue_o2);
+}
+
 .subject section a img {
   height: 3.4em;
   width: auto;
@@ -308,7 +319,6 @@ select:hover {
   margin: 0;
   overflow-wrap: anywhere;
 }
-
 
 .subject section a p {
   margin: 0;
