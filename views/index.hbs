@@ -19,7 +19,12 @@
                 <a href="/{{name}}">
                     <h3>{{name}}</h3>
                     <p>{{description}}</p>
-                    <span><img src="/images/forks_icon.svg"/>{{forkCount}}</span>
+                    <span>
+                        <picture>
+                            <source srcset="/images/forks_icon_lm.svg" media="(prefers-color-scheme: light)">
+                            <img src="/images/forks_icon_dm.svg"/>
+                        </picture>{{forkCount}}
+                    </span>
                 </a>
         {{/each}}
     </section>
