@@ -32,7 +32,7 @@ let year = 2122
 
 // Listen to all GET requests on /.
 app.get("/", (_req, res) => {
-  // Get all cmda-minor-web repositories with 2122 in the name.
+  // Get all cmda-minor-web repositories with [year] in the name.
   graphqlAuth(`{
     search(query: "${year} org:cmda-minor-web", type: REPOSITORY, first: 20) {
       nodes {
