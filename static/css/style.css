@@ -3,7 +3,7 @@
   --dark: #101010;
   --light: #F3F3F3;
   --light_o1: rgba(243, 243, 243, var(--o1));
-  --grey: #D6D6D6;
+  --grey: #c7c7c7;
   --red: #FC6A6B;
   --blue: #5D62FB;
   --yellow: #FEDB5D;
@@ -245,6 +245,15 @@ select:hover {
 .subject h1 {
   display: flex;
   align-items: flex-start;
+}
+
+h1:hover a {
+  color: var(--grey);
+  transition: color .5s ease;
+}
+
+h1 a {
+  transition: color .5s ease;
 }
 
 .subject h1::before {
