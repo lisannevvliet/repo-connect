@@ -191,23 +191,23 @@ select:hover {
   color: var(--yellow);
 }
 
-.home section h2 {
+.home section h3 {
   display: flex;
   align-items: flex-start;
 }
 
-.home section h2::before {
+.home section h3::before {
   content: url('/images/repo_icon_red.svg');
   width: .8em;
   height: .8em;
   margin-right: .1em;
 }
 
-.home section a:nth-child(3n+2) h2::before {
+.home section a:nth-child(3n+2) h3::before {
   content: url('/images/repo_icon_yellow.svg');
 }
 
-.home section a:nth-child(3n+3) h2::before {
+.home section a:nth-child(3n+3) h3::before {
   content: url('/images/repo_icon_blue.svg');
 }
 
@@ -240,8 +240,34 @@ select:hover {
 
 /* SUBJECT STYLING */
 
+.subject h1 {
+  display: flex;
+  align-items: flex-start;
+}
+
+.subject h1::before {
+  content: url('/images/repo_icon_white.svg');
+  width: .5em;
+  height: .5em;
+  margin-right: .1em;
+}
+
 .subject header {
   margin-bottom: 2em;
+}
+
+.subject > header span {
+  display: flex;
+  align-items: flex-end;
+}
+
+.subject > header span p {
+  margin: 0;
+  margin-left: 1em;
+}
+
+.subject > header span p img {
+  margin-right: .3em;
 }
 
 .subject section {
