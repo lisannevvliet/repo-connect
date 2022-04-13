@@ -250,7 +250,7 @@ select:hover {
   content: url('/images/repo_icon_white.svg');
   width: .5em;
   height: .5em;
-  margin-right: .1em;
+  margin-right: .3em;
 }
 
 .subject header {
@@ -287,7 +287,7 @@ select:hover {
   align-items: center;
   padding: .7em 1em;
   gap: 1em;
-  width: 40%;
+  width: calc(50% - 2.5em);
   border-radius: 1em;
   position: relative;
   transition: transform .5s ease, box-shadow .75s ease;
@@ -350,6 +350,51 @@ select:hover {
 .subject section a p {
   margin: 0;
   font-style: italic;
+}
+
+@media only screen and (max-width: 1000px){
+  .subject section {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  body {
+    font-size: .8em;
+  }
+
+  body > header {
+    flex-wrap: wrap;
+    padding: 2em;
+    gap: 1em;
+  }
+
+  main {
+    padding: 0 2em 2em 2em;
+  }
+
+  .subject section a {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .subject section a div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .subject .uneven a:nth-last-of-type(1)::after {
+    height: 10.3em;
+    top: calc(50% - 10.3em);
+  }
+}
+
+@media only screen and (max-width: 528px){
+  .subject .uneven a:nth-last-of-type(1)::after {
+    height: 11.5em;
+    top: calc(50% - 11.5em);
+  }
 }
 
 
