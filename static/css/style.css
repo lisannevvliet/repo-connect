@@ -65,6 +65,7 @@ p {
 button {
   font-family: 'Chivo', sans-serif;
   font-weight: bold;
+  color: var(--dark);
   padding: 1em 1.75em;
   border: none;
   border-radius: 1em;
