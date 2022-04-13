@@ -1,14 +1,22 @@
+{{> header }}
+
 <main class="subject">
     <header>
         <h1><a href="{{repository.url}}" target="_blank">{{repository.name}}</a></h1>
         <p>{{repository.description}}</p>
     </header>
 
-    {{#each forks}}
-        <section>
-            <p><a href="{{url}}" target="_blank">{{name}}</a></p>
-            <p><a href="{{owner.url}}" target="_blank">{{owner.login}}</a></p>
-            <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
-        </section>
-    {{/each}}
+    <h2>Connected Repositories</h2>
+    <section>
+        {{#each forks}}
+            <a href="{{url}}">
+                <img src="{{owner.avatarUrl}}" alt="{{owner.login}}">
+
+                <div>
+                    <h4>{{name}}</h4>
+                    <p>{{owner.login}}</p>
+                </div>
+            </a>
+        {{/each}}
+    </section>
 </main>
