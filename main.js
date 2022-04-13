@@ -120,6 +120,7 @@ app.get("/:subject", (req, res) => {
 
     // Render the subject page with the forks.
     res.render("subject", {
+      repository: data.repositories.nodes[0],
       forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
     })
   })
