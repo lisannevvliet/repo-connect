@@ -85,7 +85,7 @@ button:hover {
 }
 
 .shuffle::before {
-  content: url('/images/shuffle_icon.svg');
+  content: url('/images/shuffle_icon_dm.svg');
   width: 1.4em;
   height: 1.4em;
   margin-right: .5em;
@@ -206,7 +206,7 @@ select:hover {
 }
 
 .home section a:nth-child(3n+2) h3::before {
-  content: url('/images/repo_icon_yellow.svg');
+  content: url('/images/repo_icon_yellow_dm.svg');
 }
 
 .home section a:nth-child(3n+3) h3::before {
@@ -257,7 +257,7 @@ h1 a {
 }
 
 .subject h1::before {
-  content: url('/images/repo_icon_white.svg');
+  content: url('/images/repo_icon_dm.svg');
   width: .5em;
   height: .5em;
   margin-right: .3em;
@@ -275,6 +275,7 @@ h1 a {
 .subject > header span p {
   margin: 0;
   margin-left: 1em;
+  display: flex;
 }
 
 .subject > header span p img {
@@ -416,7 +417,7 @@ h1 a {
     --grey: #272727;
     --red: #FC6A6B;
     --blue: #5D62FB;
-    --yellow: rgb(207, 169, 33);
+    --yellow: #cfa921;
     --o1: .25;
     --o2: .4;
     --red_o1: rgba(252, 106, 107, var(--o1));
@@ -429,5 +430,17 @@ h1 a {
 
   select {
     background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  }
+
+  .shuffle::before {
+    content: url('/images/shuffle_icon_lm.svg');
+  }
+
+  .home section a:nth-child(3n+2) h3::before {
+    content: url('/images/repo_icon_yellow_lm.svg');
+  }
+
+  .subject h1::before {
+    content: url('/images/repo_icon_lm.svg');
   }
 } 

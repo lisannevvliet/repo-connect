@@ -2,7 +2,12 @@
     <header>
         <span>
             <h1><a href="{{repository.url}}" target="_blank">{{repository.name}}</a></h1>
-            <p><img src="/images/forks_icon.svg"/>{{repository.forkCount}}</p>
+            <p>
+                <picture>
+                    <source srcset="/images/forks_icon_lm.svg" media="(prefers-color-scheme: light)">
+                    <img src="/images/forks_icon_dm.svg"/>
+                </picture>{{repository.forkCount}}
+            </p>
         </span>
         <p>{{repository.description}}</p>
     </header>
