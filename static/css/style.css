@@ -2,7 +2,6 @@
 :root {
   --dark: #101010;
   --light: #F3F3F3;
-  --light_o1: rgba(243, 243, 243, var(--o1));
   --grey: #c7c7c7;
   --red: #FC6A6B;
   --blue: #5D62FB;
@@ -361,6 +360,7 @@ h1 a {
 .subject section a p {
   margin: 0;
   font-style: italic;
+  overflow-wrap: anywhere;
 }
 
 @media only screen and (max-width: 1000px){
@@ -411,20 +411,11 @@ h1 a {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --light: #101010;
-    --dark: #F3F3F3;
-    --light_o1: rgba(243, 243, 243, var(--o1));
+    --light: rgb(16, 16, 16);
+    --dark: rgb(243, 243, 243);
     --grey: #272727;
-    --red: #FC6A6B;
-    --blue: #5D62FB;
     --yellow: #cfa921;
-    --o1: .25;
-    --o2: .4;
-    --red_o1: rgba(252, 106, 107, var(--o1));
-    --blue_o1: rgba(93, 98, 251, var(--o1));
     --yellow_o1: rgba(207, 169, 33, var(--o1));
-    --red_o2: rgba(252, 106, 107, var(--o2));
-    --blue_o2: rgba(93, 98, 251, var(--o2));
     --yellow_o2: rgba(207, 169, 33, var(--o2));
   }
 
