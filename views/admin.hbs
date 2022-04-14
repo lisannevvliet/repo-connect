@@ -26,7 +26,12 @@
             {{else}}
                 <ul>
                     {{#each blacklist}}
-                        <li>{{this}}</li>
+                        <li>
+                            {{this}}
+                            <form action="/{{../repository.name}}/admin/remove-item-blacklist" method="post">
+                                <button type="submit" name="username" value="{{this}}"></button>
+                            </form>
+                        </li>
                     {{/each}}
                 </ul>
 

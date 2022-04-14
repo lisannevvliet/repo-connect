@@ -210,6 +210,14 @@ app.post("/:subject/admin/blacklist", (req, res) => {
   res.redirect(`/${req.params.subject}/admin`)
 })
 
+// Listen to all POST requests on /[subject]/admin/remove-item-blacklist.
+app.post("/:subject/admin/remove-item-blacklist", (req, res) => {
+  console.log(req.body.username)
+
+  // Redirect to the admin page.
+  res.redirect(`/${req.params.subject}/admin`)
+})
+
 // Listen to all POST requests on /[subject]/admin/clear-blacklist.
 app.post("/:subject/admin/clear-blacklist", (req, res) => {
   // Clear the blacklist.
