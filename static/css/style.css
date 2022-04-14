@@ -92,13 +92,11 @@ button:hover {
 
 form {
   margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  width: auto;
 }
 
-form button, form input, form label {
-  width: auto;
+form input {
+  display: block;
+  margin-bottom: .5em;
 }
 
 
