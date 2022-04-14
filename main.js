@@ -85,6 +85,9 @@ function shuffle(array) {
   return array
 }
 
+// Array which stores usernames added to the blacklist.
+let blacklist = []
+
 // Listen to all GET requests on /[subject].
 app.get("/:subject", (req, res) => {
   // Get the cmda-minor-web repository that matches the subject name.
@@ -118,11 +121,25 @@ app.get("/:subject", (req, res) => {
       fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
     }
 
+    // Variable which stores the forks.
+    const forks = JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
+
+    // Loop over the blacklist items.
+    blacklist.forEach(item => {
+      // Loop over the forks.
+      forks.forEach((fork, index) => {
+        // If an item exists in both arrays, remove the correponding fork.
+        if (item == fork.owner.login) {
+          forks.splice(index, 1)
+        }
+      })
+    })
+
     // Render the subject page with the respository, forks and Boolean which tells whether the amount of forks is uneven.
     res.render("subject", {
       repository: data.repositories.nodes[0],
-      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
-      uneven: data.repositories.nodes[0].forks.nodes.length % 2 != 0
+      forks: forks,
+      uneven: forks.length % 2 != 0
     })
   })
 })
@@ -160,13 +177,37 @@ app.get("/:subject/admin", (req, res) => {
       fs.writeFileSync(`static/json/${req.params.subject}.json`, JSON.stringify(shuffle(data.repositories.nodes[0].forks.nodes)))
     }
 
+    // Variable which stores the forks.
+    const forks = JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8"))
+
+    // Loop over the blacklist items.
+    blacklist.forEach(item => {
+      // Loop over the forks.
+      forks.forEach((fork, index) => {
+        // If an item exists in both arrays, remove the correponding fork.
+        if (item == fork.owner.login) {
+          forks.splice(index, 1)
+        }
+      })
+    })
+
     // Render the admin page with the respository and forks.
     res.render("admin", {
       repository: data.repositories.nodes[0],
-      forks: JSON.parse(fs.readFileSync(`static/json/${req.params.subject}.json`, "utf8")),
-      uneven: data.repositories.nodes[0].forks.nodes.length % 2 != 0
+      forks: forks,
+      uneven: forks.length % 2 != 0,
+      blacklist: blacklist
     })
   })
+})
+
+// Listen to all POST requests on /[subject]/admin/blacklist.
+app.post("/:subject/admin/blacklist", (req, res) => {
+  // Add the entered username to the blacklist.
+  blacklist.push(req.body.username)
+
+  // Redirect to the admin page.
+  res.redirect(`/${req.params.subject}/admin`)
 })
 
 // Listen to all POST requests on /[subject]/admin/shuffle.
