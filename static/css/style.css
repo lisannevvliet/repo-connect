@@ -105,6 +105,7 @@ ul {
 
 input[type="text"] {
   background: var(--light);
+  color: var(--dark);
   border: none;
   padding: 1em 1.5em;
   border-radius: 1em;
