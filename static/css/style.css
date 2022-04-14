@@ -96,7 +96,7 @@ form {
 
 form input {
   display: block;
-  margin-bottom: .5em;
+  margin: .3em 0 .75em 0;
 }
 
 
@@ -370,6 +370,12 @@ h1 a {
   margin: 0;
   font-style: italic;
   overflow-wrap: anywhere;
+}
+
+.subject .blacklist {
+  margin-top: 2em;
+  flex-direction: column;
+  gap: .3em;
 }
 
 @media only screen and (max-width: 1000px){

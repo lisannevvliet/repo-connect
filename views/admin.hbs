@@ -14,21 +14,24 @@
             <button type="submit" class="shuffle">Shuffle</button>
         </form>
 
-        <h3>Blacklist:</h3>
-        <form action="/{{repository.name}}/admin/blacklist" method="post">
-            <label for="username">Fill username to blacklist:</label>
-            <input type="text" id="username" name="username">
-            <input type="submit"></input>
-        </form>
+        <section class="blacklist">
+            <h3>Blacklist:</h3>
+            <form action="/{{repository.name}}/admin/blacklist" method="post">
+                <label for="username">Fill username to blacklist:</label>
+                <input type="text" id="username" name="username">
+                <button type="submit">Add</button>
+            </form>
 
-        {{#ifCond blacklist.length 0}}
-        {{else}}
-            <ul>
-                {{#each blacklist}}
-                    <li>{{this}}</li>
-                {{/each}}
-            </ul>
-        {{/ifCond}}
+            {{#ifCond blacklist.length 0}}
+            {{else}}
+                <ul>
+                    {{#each blacklist}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/ifCond}}
+        </section>
+        
     </header>
 
     <h2>Connected Repositories</h2>
