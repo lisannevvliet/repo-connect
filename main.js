@@ -212,7 +212,13 @@ app.post("/:subject/admin/blacklist", (req, res) => {
 
 // Listen to all POST requests on /[subject]/admin/remove-item-blacklist.
 app.post("/:subject/admin/remove-item-blacklist", (req, res) => {
-  console.log(req.body.username)
+  // Loop over the blacklist items.
+  blacklist.forEach((item, index) => {
+    // If an item matches the username which needs to be whitelisted, remove the item.
+    if (item == req.body.username) {
+      blacklist.splice(index, 1)
+    }
+  })
 
   // Redirect to the admin page.
   res.redirect(`/${req.params.subject}/admin`)
