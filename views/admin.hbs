@@ -29,14 +29,19 @@
                         <li>
                             {{this}}
                             <form action="/{{../repository.name}}/admin/remove-item-blacklist" method="post">
-                                <button type="submit" name="username" value="{{this}}"></button>
+                                <button type="submit" name="username" value="{{this}}">
+                                    <picture>
+                                        <source srcset="/images/delete_icon_lm.svg" media="(prefers-color-scheme: light)">
+                                        <img src="/images/delete_icon_dm.svg"/>
+                                    </picture>
+                                </button>
                             </form>
                         </li>
                     {{/each}}
                 </ul>
 
                 <form action="/{{repository.name}}/admin/clear-blacklist" method="post">
-                    <button type="submit">Clear</button>
+                    <button type="submit" class="clear">Clear all</button>
                 </form>
             {{/ifCond}}
         </section>

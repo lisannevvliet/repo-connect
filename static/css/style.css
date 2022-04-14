@@ -4,6 +4,7 @@
   --light: #F3F3F3;
   --grey: #c7c7c7;
   --red: #FC6A6B;
+  --darkRed:rgb(206, 72, 72);
   --blue: #5D62FB;
   --yellow: #FEDB5D;
   --o1: .25;
@@ -228,7 +229,6 @@ select:hover {
 .home section h3 {
   display: flex;
   align-items: flex-start;
-  font-size: 1.5em;
 }
 
 .home section h3::before {
@@ -403,6 +403,37 @@ h1 a {
   gap: .3em;
 }
 
+.subject .blacklist li {
+  display: flex;
+  align-items: center;
+}
+
+.subject .blacklist li form {
+  margin: 0 0 0 .3em;
+}
+
+.subject .blacklist li button {
+  background: transparent;
+  padding: .3em;
+}
+
+.subject .blacklist li img {
+  height: 1.3em;
+  width: 1.3em;
+}
+
+.clear {
+  background-color: var(--red);
+  margin-top: .6em;
+}
+
+.clear:hover {
+  background-color: var(--darkRed);
+  transition: background-color .5s ease;
+}
+
+
+
 @media only screen and (max-width: 1000px){
   .subject section {
     max-width: 100%;
@@ -438,6 +469,10 @@ h1 a {
   .subject .uneven a:nth-last-of-type(1)::after {
     height: 10.3em;
     top: calc(50% - 10.3em);
+  }
+
+  .home section h3::before {
+    margin-right: .3em;
   }
 }
 
