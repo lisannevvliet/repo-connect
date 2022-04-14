@@ -103,6 +103,13 @@ ul {
   margin: 0;
 }
 
+input[type="text"] {
+  background: var(--light);
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: 1em;
+}
+
 
 /* STYLING */
 
