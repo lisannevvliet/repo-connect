@@ -29,6 +29,10 @@
                         <li>{{this}}</li>
                     {{/each}}
                 </ul>
+
+                <form action="/{{repository.name}}/admin/clear-blacklist" method="post">
+                    <button type="submit">Clear</button>
+                </form>
             {{/ifCond}}
         </section>
         
