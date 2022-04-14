@@ -90,6 +90,11 @@ button:hover {
   margin-right: .5em;
 }
 
+form {
+  margin-bottom: 1em;
+  display: flex;
+}
+
 
 /* STYLING */
 
