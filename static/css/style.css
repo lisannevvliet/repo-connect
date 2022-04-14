@@ -111,6 +111,18 @@ input[type="text"] {
   border-radius: 1em;
 }
 
+.add {
+  display: flex;
+  align-items: center;
+}
+
+.add::before {
+  content: url('/images/add_icon_dm.svg');
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: .5em;
+}
+
 
 /* STYLING */
 

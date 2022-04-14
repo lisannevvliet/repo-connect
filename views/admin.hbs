@@ -19,7 +19,7 @@
             <form action="/{{repository.name}}/admin/blacklist" method="post">
                 <label for="username">Fill username to blacklist:</label>
                 <input type="text" id="username" name="username" placeholder="Jane Doe">
-                <button type="submit">Add</button>
+                <button class="add" type="submit">Add</button>
             </form>
 
             {{#ifCond blacklist.length 0}}
