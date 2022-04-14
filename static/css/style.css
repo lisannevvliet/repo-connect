@@ -118,8 +118,8 @@ input[type="text"] {
 
 .add::before {
   content: url('/images/add_icon_dm.svg');
-  width: 1.4em;
-  height: 1.4em;
+  display: flex;
+  align-items: center;
   margin-right: .5em;
 }
 
@@ -472,5 +472,9 @@ h1 a {
 
   .subject h1::before {
     content: url('/images/repo_icon_lm.svg');
+  }
+
+  .add::before {
+    content: url('/images/add_icon_lm.svg');
   }
 } 
