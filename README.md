@@ -8,7 +8,7 @@
   - [License](#license)
 
 ## Live demo
-https://college-poll.herokuapp.com/
+https://repo-connect.herokuapp.com/
 
 ## Installation
 Clone deze repository naar jouw lokale folder:
