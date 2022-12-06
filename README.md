@@ -8,7 +8,7 @@
   - [License](#license)
 
 ## Live demo
-https://repo-connect.herokuapp.com/
+https://repo-connect.onrender.com
 
 ## Installation
 Clone deze repository naar jouw lokale folder:
